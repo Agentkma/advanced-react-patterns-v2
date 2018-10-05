@@ -25,9 +25,9 @@ to get started!
 
 ## System Requirements
 
-* [git][git] v2.14.1 or greater
-* [NodeJS][node] v8.9.4 or greater
-* [npm][npm] v5.6.0 or greater
+- [git][git] v2.14.1 or greater
+- [NodeJS][node] v8.9.4 or greater
+- [npm][npm] v5.6.0 or greater
 
 All of these must be available in your `PATH`. To verify things are set up
 properly, you can run this:
@@ -57,7 +57,6 @@ should be able to just run a few commands to get set up:
 ```
 git clone https://github.com/kentcdodds/advanced-react-patterns-v2.git
 cd advanced-react-patterns-v2
-npm run setup --silent
 ```
 
 This may take a few minutes. **It will ask you for your email.** This is
@@ -140,6 +139,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 | [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub><b>Kent C. Dodds</b></sub>](https://kentcdodds.com)<br />[💻](https://github.com/kentcdodds/advanced-component-patterns-v2/commits?author=kentcdodds "Code") [📖](https://github.com/kentcdodds/advanced-component-patterns-v2/commits?author=kentcdodds "Documentation") [🚇](#infra-kentcdodds "Infrastructure (Hosting, Build-Tools, etc)") [⚠️](https://github.com/kentcdodds/advanced-component-patterns-v2/commits?author=kentcdodds "Tests") | [<img src="https://avatars0.githubusercontent.com/u/1250430?v=4" width="100px;"/><br /><sub><b>FWeinb</b></sub>](https://github.com/FWeinb)<br />[🐛](https://github.com/kentcdodds/advanced-component-patterns-v2/issues?q=author%3AFWeinb "Bug reports") [🤔](#ideas-FWeinb "Ideas, Planning, & Feedback") | [<img src="https://avatars2.githubusercontent.com/u/1383720?v=4" width="100px;"/><br /><sub><b>David Lannoye</b></sub>](https://github.com/dlannoye)<br />[🐛](https://github.com/kentcdodds/advanced-component-patterns-v2/issues?q=author%3Adlannoye "Bug reports") [📖](https://github.com/kentcdodds/advanced-component-patterns-v2/commits?author=dlannoye "Documentation") | [<img src="https://avatars2.githubusercontent.com/u/9815009?s=460&v=4" width="100px;"/><br /><sub><b>Colin Cummings</b></sub>](https://github.com/colinrcummings)<br />[💻](https://github.com/kentcdodds/advanced-component-patterns-v2/commits?author=colinrcummings "Code") [⚠️](https://github.com/kentcdodds/advanced-component-patterns-v2/commits?author=colinrcummings "Tests") | [<img src="https://avatars2.githubusercontent.com/u/464764?v=4" width="100px;"/><br /><sub><b>Benji Koltai</b></sub>](https://github.com/bkoltai)<br />[📖](https://github.com/kentcdodds/advanced-component-patterns-v2/commits?author=bkoltai "Documentation") | [<img src="https://avatars1.githubusercontent.com/u/1779959?v=4" width="100px;"/><br /><sub><b>Sumit Bagga</b></sub>](http://baggasumit.github.io)<br />[📖](https://github.com/kentcdodds/advanced-component-patterns-v2/commits?author=baggasumit "Documentation") | [<img src="https://avatars0.githubusercontent.com/u/2027010?v=4" width="100px;"/><br /><sub><b>Yury Tarabanko</b></sub>](https://github.com/Tarabyte)<br />[💻](https://github.com/kentcdodds/advanced-component-patterns-v2/commits?author=Tarabyte "Code") |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | [<img src="https://avatars2.githubusercontent.com/u/5779538?v=4" width="100px;"/><br /><sub><b>Alex Wendte</b></sub>](http://www.wendtedesigns.com/)<br />[💻](https://github.com/kentcdodds/advanced-component-patterns-v2/commits?author=themostcolm "Code") |
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
