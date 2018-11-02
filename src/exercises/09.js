@@ -12,41 +12,56 @@ class Toggle extends React.Component {
     onReset: () => {},
     stateReducer: (state, changes) => changes,
   }
+
+  static stateChangeTypes = {
+    reset: '__toggle_reset__',
+    toggle: '__toggle_toggle__',
+  }
+
   initialState = {on: this.props.initialOn}
+
   state = this.initialState
+
   internalSetState(changes, callback) {
     this.setState(state => {
       // handle function setState call
       const changesObject =
         typeof changes === 'function' ? changes(state) : changes
+
       // apply state reducer
       const reducedChanges =
         this.props.stateReducer(state, changesObject) || {}
-      // 🐨  in addition to what we've done, let's pluck off the `type`
-      // property and return an object only if the state changes
+      // remove the type so it's not set into state
       // 💰 to remove the `type`, you can destructure the changes:
       // `{type, ...c}`
-      return Object.keys(reducedChanges).length
-        ? reducedChanges
-        : null
+      const {type: ignoredType, ...onlyChanges} = reducedChanges
+      // property and return an object only if the state changes
+
+      // return null if there are no changes to be made
+      return Object.keys(onlyChanges).length ? onlyChanges : null
     }, callback)
   }
+
   reset = () =>
     // 🐨 add a `type` string property to this call
-    this.internalSetState(this.initialState, () =>
-      this.props.onReset(this.state.on),
+    this.internalSetState(
+      {
+        ...this.initialState,
+        type: Toggle.stateChangeTypes.reset,
+      },
+      () => this.props.onReset(this.state.on),
     )
   // 🐨 accept a `type` property here and give it a default value
-  toggle = () =>
+  toggle = ({type = Toggle.stateChangeTypes.toggle} = {}) =>
     this.internalSetState(
       // pass the `type` string to this object
-      ({on}) => ({on: !on}),
+      ({on}) => ({on: !on, type}),
       () => this.props.onToggle(this.state.on),
     )
   getTogglerProps = ({onClick, ...props} = {}) => ({
     // 🐨 change `this.toggle` to `() => this.toggle()`
     // to avoid passing the click event to this.toggle.
-    onClick: callAll(onClick, this.toggle),
+    onClick: callAll(onClick, () => this.toggle()),
     'aria-pressed': this.state.on,
     ...props,
   })
