@@ -3,32 +3,55 @@ import React, {Fragment} from 'react'
 import {Switch} from '../switch'
 
 // 🐨 create your React context here with React.createContext
+const ToggleContext = React.createContext()
+
+// 💯 Extra credit: Add a custom Consumer that validates the
+// ToggleContext.Consumer is rendered within a provider
+function ToggleConsumer(props) {
+  return (
+    <ToggleContext.Consumer {...props}>
+      {context => {
+        if (!context) {
+          throw new Error(
+            `Toggle.Consumer cannot be rendered outside the Toggle component`,
+          )
+        }
+        return props.children(context)
+      }}
+    </ToggleContext.Consumer>
+  )
+}
 
 class Toggle extends React.Component {
-  // 🐨 expose the ToggleContext.Consumer as a static property of Toggle here.
-  state = {on: false}
+  // 🐨 expose the  custom ToggleContext.Consumer as a static property of Toggle here.
+  static Consumer = ToggleConsumer
+
+  // 💯 Extra credit: avoid unecessary re-renders by only updating the value when
+  // state changes
+  // * must move state below toggle
   toggle = () =>
     this.setState(
       ({on}) => ({on: !on}),
       () => this.props.onToggle(this.state.on),
     )
+
+  state = {on: false, toggle: this.toggle}
+
+  //
+  // 💯 Extra credit: support render props as well
+  //
   render() {
-    // 🐨 replace this with rendering the ToggleContext.Provider
-    return this.props.children({
-      on: this.state.on,
-      toggle: this.toggle,
-    })
+    const {children, ...rest} = this.props
+    const ui =
+      typeof children === 'function' ? children(this.state) : children
+    return (
+      <ToggleContext.Provider value={this.state} {...rest}>
+        {ui}
+      </ToggleContext.Provider>
+    )
   }
 }
 
-// 💯 Extra credit: Add a custom Consumer that validates the
-// ToggleContext.Consumer is rendered within a provider
-//
-// 💯 Extra credit: avoid unecessary re-renders by only updating the value when
-// state changes
-//
-// 💯 Extra credit: support render props as well
-//
 // 💯 Extra credit: support (and expose) compound components!
 
 // Don't make changes to the Usage component. It's here to show you how your
